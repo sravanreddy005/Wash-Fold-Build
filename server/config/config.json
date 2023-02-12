@@ -16,19 +16,19 @@
         "NO_OF_ALLOWED_LOGINS": 2
     },
     "production": {
-        "BASE_URL": "http://3.111.32.70:3000",
+        "BASE_URL": "http://3.10.54.29:3000",
         "PORT": 3000,
         "DB_HOST": "localhost",
-        "DB_NAME": "",
+        "DB_NAME": "wash_and_fold_db",
         "DB_USERNAME": "root",
-        "DB_PASSWORD": "",
+        "DB_PASSWORD": "WashFold@123#",
         "JWT_SECRET": "Iw$h0pping$r@v@n5",
         "ACCESS_TOKEN_SECRET": "W@sh@ndFold@2a6a5ec97bf11244b687a230fc92f605ab15d605@$r@v@n5",
         "ACCESS_TOKEN_EXPIRY": 720,
         "REFRESH_TOKEN_SECRET": "W@sh@ndFold@2fb7da97f804d446f98f4e121e0ece659a5c4e45@$r@v@n5",
         "REFRESH_TOKEN_EXPIRY": 43200,
-        "APP_URL": "http://3.111.32.70:3000",
-        "LOG_FILE_NAME": "hic_admin_portal_logs",
-        "NO_OF_ALLOWED_LOGINS": 2
+        "APP_URL": "http://3.10.54.29:3000",
+        "LOG_FILE_NAME": "wash_fold_logs",
+        "NO_OF_ALLOWED_LOGINS": 5
     }
 }
