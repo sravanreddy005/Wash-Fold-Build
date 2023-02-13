@@ -37,6 +37,8 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With,content-type, Authorization');
     res.setHeader('Content-Security-Policy', "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline'; font-src: * 'unsafe-inline';");
     res.setHeader('Cross-Origin-Resource-Policy', "*");
+	res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+	res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
     if (req.secure) {
         res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
     }
