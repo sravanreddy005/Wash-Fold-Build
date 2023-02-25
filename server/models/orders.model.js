@@ -117,9 +117,40 @@ OrdersModels.CustomerInfo = sequelize.define('customer_info', {
     ]
   }
 );
-
-
 /*********************** End of customerInfo schema defining *************************/
+
+/*********************** VerificationOTP schema defining *************************/
+OrdersModels.VerificationOTP = sequelize.define('verification_otps', {
+  id: {
+    type: Sequelize.INTEGER,
+    unique: true,
+    autoIncrement: true,   
+    primaryKey: true 
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  otp: {
+    type: Sequelize.STRING,
+    allowNull: false
+  }
+},
+  {
+    underscored: true,
+    freezeTableName: true,
+    tableName: 'verification_otps',
+    indexes: [
+      {
+        fields: ['email']
+      },
+      {
+        fields: ['otp']
+      }
+    ]
+  }
+);
+/*********************** End of VerificationOTP schema defining *************************/
 
 /*********************** Orders schema defining *************************/
 OrdersModels.Orders = sequelize.define('orders', {

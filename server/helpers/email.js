@@ -23,6 +23,10 @@ module.exports.sendMail = (toMail, replaceData, type, emailProvider = 'nodemaile
                 var templateFile = 'reset-password.html';
                 var subject = 'Reset your password';
                 break;
+            case 'sendOTP':
+                var templateFile = 'send-otp.html';
+                var subject = 'Verification';
+                break;
             default:
                 subject = '';
                 break;
@@ -35,7 +39,39 @@ module.exports.sendMail = (toMail, replaceData, type, emailProvider = 'nodemaile
               } else {
                 const template = handlebars.compile(html);
                 const htmlToSend = template(replaceData);
-                if(emailProvider === 'pepiPost'){
+                if(emailProvider === 'sendinblue'){
+                  let bodyData = {  
+                      "sender":{  
+                        "name":"Wash&Fold",
+                        "email":"washandfoldlaundrette@gmail.com"
+                      },
+                      "to":[  
+                        {  
+                            "email":toMail,
+                            "name":replaceData.name
+                        }
+                      ],
+                      "subject":"Verification",
+                      "htmlContent":htmlToSend
+                  }
+                  const options = {
+                    method: 'POST',
+                    url: 'https://api.sendinblue.com/v3/smtp/email',
+                    headers: {
+                      'Content-Type': 'application/json', 
+                      'api-key': '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'
+                    },
+                    data: bodyData
+                  };
+
+                  axios.request(options).then(function (response) {
+                    console.log('email sendinblue response', response.data);
+                    resolve(response.data);
+                  }).catch(function (error) {
+                    console.error('email sendinblue error', error);
+                    reject(error);
+                  });
+                }else if(emailProvider === 'pepiPost'){
                   let bodyData = {
                     from: {email: fromMail, name: 'Wash&Fold'},
                     subject: subject,
@@ -54,7 +90,7 @@ module.exports.sendMail = (toMail, replaceData, type, emailProvider = 'nodemaile
                   }
                   
 
-                  var options = {
+                  const options = {
                     method: 'POST',
                     url: 'https://emailapi.netcorecloud.net/v5.1/mail/send',
                     headers: {'Content-Type': 'application/json', 'api_key': 'ed49b435d04f04584e8985e15c364947'},

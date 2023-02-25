@@ -90,7 +90,7 @@ class AdminService {
     getOneRecordFromDB(tableName, whereData) {
         return new Promise(async (resolve, reject) => {
             try {
-                let resp = await OrdersModels[tableName].findOne({ where: whereData });
+                let resp = await OrdersModels[tableName].findOne({ where: whereData, order: [[ 'createdAt', 'DESC' ]] });
                 resolve(resp);
             } catch (error) {
                 reject(error);
@@ -101,8 +101,6 @@ class AdminService {
     getOneRecordWithJoinFromDB(tableName, whereData, includeData) {
         return new Promise(async (resolve, reject) => {
             try {
-                console.log('whereData', whereData);
-                console.log('tableName', tableName);
                 let resp = await OrdersModels[tableName].findOne({ 
                     where: whereData,
                     include: includeData,

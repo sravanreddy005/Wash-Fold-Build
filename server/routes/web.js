@@ -13,6 +13,9 @@ router.post('/getTimeSlots', AdminController.getTimeSlots);
 router.post('/addOrder', OrdersController.addOrder);
 router.post('/getOrderDetails', OrdersController.getOrderDetails);
 router.post('/getTestimonials', AdminController.getActiveTestimonials);
+router.post('/getExistingCustomerDetails', OrdersController.getExistingCustomerDetails);
+router.post('/sendVerificationEmail', OrdersController.sendVerificationEmail);
+router.post('/verifyOTP', OrdersController.verifyOTP);
 
 
 module.exports = router;

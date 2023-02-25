@@ -160,9 +160,9 @@ module.exports.forgotAdminPassword = async (req, res, next) => {
                 let jwtToken = await generateJWT(tokenData, jwtExp);
                 const replaceData = {
                     first_name: firstName,
-                    reset_url : process.env.APP_URL + `/auth/reset-password?token=${encodeURI(jwtToken)}`
+                    reset_url : process.env.APP_URL + `/admin/auth/reset-password?token=${encodeURI(jwtToken)}`
                 }
-                const sendMailResp = await sendMail(email, replaceData, 'sendResetPassword');
+                const sendMailResp = await sendMail(email, replaceData, 'sendResetPassword', 'sendinblue');
                 if(sendMailResp && sendMailResp.response && (sendMailResp.accepted).length > 0){
                     const whereData = {email: email, token_expiry: { [Sequelize.Op.gte]: new Date() }};
                     const updateResp = await updateAuthRecordInDB('ResetPasswordRecords', {token_expiry: new Date()}, whereData);

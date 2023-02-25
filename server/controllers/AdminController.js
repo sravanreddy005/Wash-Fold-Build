@@ -290,10 +290,9 @@ module.exports.createAdmin = async (req, res, next) => {
                     first_name: req.body.first_name,
                     username : email,
                     password : passwordObj.password,
-                    login_url : process.env.APP_URL + '/auth/login'
+                    login_url : process.env.APP_URL + '/admin/auth/login'
                 }
-                const sendMailResp = await sendMail(email, replaceData, 'sendUserNamePassword', 'pepiPost');
-                console.log('User details', {email: email, password: passwordObj.password});
+                const sendMailResp = await sendMail(email, replaceData, 'sendUserNamePassword', 'sendinblue');
                 res.status(200).json({responseCode: 1, message: "User created successfully"});   
             }else{
                 res.status(200).json({responseCode: 0, message: "User creating has failed"}); 
@@ -685,7 +684,6 @@ module.exports.updatePassword = async (req, res, next) => {
 module.exports.createProductTypes = async (req, res, next) => {
     try {
         const reqBody = req.body;
-        console.log('reqBody', reqBody);
         if(
             reqBody &&
             reqBody.product_type && validateData('alnum', reqBody.product_type)
@@ -1236,7 +1234,6 @@ module.exports.deleteBranch = async (req, res, next) => {
 module.exports.createTimeSlots = async (req, res, next) => {
     try {
         const reqBody = req.body;
-        console.log('reqBody', reqBody);
         if(
             reqBody &&
             reqBody.type &&

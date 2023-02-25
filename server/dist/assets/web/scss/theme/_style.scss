@@ -5608,7 +5608,7 @@ ngx-loading-bar {
 .breadcrumb-section {
     background-color: #eff7ff;
     padding: 15px 0;
-    margin-top: 135px;
+    margin-top: 5px;
     .page-title {
         display: flex;
         height: 100%;
@@ -12615,7 +12615,7 @@ footer {
     }
 }
 .header-gym {
-    position: absolute;
+    position: relative;
     width: 100%;
     z-index: 2;
     background-color: rgb(0 105 196 / 25%);
