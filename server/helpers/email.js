@@ -72,7 +72,7 @@ module.exports.sendMail = (toMail, replaceData, type, emailProvider = 'nodemaile
                     url: 'https://api.sendinblue.com/v3/smtp/email',
                     headers: {
                       'Content-Type': 'application/json', 
-                      'api-key': ''
+                      'api-key': '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'
                     },
                     data: bodyData
                   };
