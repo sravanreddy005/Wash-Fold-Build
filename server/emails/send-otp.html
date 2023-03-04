@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
             min-width: 100% !important;
+            background-color: #fff;
         }
 
         img {
@@ -20,7 +21,13 @@
             width: 100%;
             max-width: 600px;
         }
-
+        
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
         .header {
             padding: 40px 30px 20px 30px;
         }
@@ -85,11 +92,11 @@
         .footercopy {
             font-family: sans-serif;
             font-size: 14px;
-            color: #ffffff;
+            color: #000;
         }
 
         .footercopy a {
-            color: #ffffff;
+            color: #000;
             text-decoration: underline;
         }
 
@@ -141,33 +148,14 @@
                     <td>
                 <![endif]-->
                 <table bgcolor="#ffffff" class="content" align="center" cellpadding="0" cellspacing="0" border="0">
-                    <tr>
-                        <td bgcolor="#c7d8a7" class="header">
-                            <table width="70" align="left" border="0" cellpadding="0" cellspacing="0">
+                    <tr align="center">
+                        <td bgcolor="#fff" class="header">
+                            <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td height="70" style="padding: 0 20px 20px 0;">
+                                    <td class="center" height="70" style="padding: 0 20px 20px 0;text-align: center">
                                         <img class="fix"
-                                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/icon.gif"
+                                            src="{{logo}}"
                                             width="70" height="70" border="0" alt="" />
-                                    </td>
-                                </tr>
-                            </table>
-                            <!--[if (gte mso 9)|(IE)]>
-                                <table width="425" align="left" cellpadding="0" cellspacing="0" border="0">
-                                <tr>
-                                    <td>
-                            <![endif]-->
-                            <table class="col425" align="left" border="0" cellpadding="0" cellspacing="0"
-                                style="width: 100%; max-width: 425px;">
-                                <tr>
-                                    <td height="70">
-                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">                                            
-                                            <tr>
-                                                <td class="h1" style="padding: 5px 0 0 0;">
-                                                    Wash&Fold
-                                                </td>
-                                            </tr>
-                                        </table>
                                     </td>
                                 </tr>
                             </table>
@@ -182,28 +170,19 @@
                         <td class="innerpadding borderbottom">
                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td class="h2">
-                                        Welcome {{name}}!
-                                    </td>
-                                </tr>
-                                <tr>
                                     <td class="bodycopy">
-                                        Your Verification OTP: {{otp}}.
+                                        <p style="font-size: 14px;"><b>Hi {{name}},</b></p>                                
+                                        <p style="font-size: 14px;">Your Verification OTP: {{otp}},</p>
                                     </td>
                                 </tr>
                             </table>
                         </td>
-                    </tr>                     
+                    </tr>                      
                     <tr>
-                        <td class="footer" bgcolor="#44525f">
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <td class="footer" bgcolor="#f1ebeb">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">                                
                                 <tr>
-                                    <td align="center" class="footercopy">
-                                        &copy; 2023 Wash&Fold<br />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" style="padding: 20px 0 0 0;">
+                                    <td align="center" style="padding: 0 0 20px 0;">
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                                 <td width="37" style="text-align: center; padding: 0 10px 0 10px;">
@@ -220,6 +199,11 @@
                                                 </td>
                                             </tr>
                                         </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="footercopy">
+                                        &copy; 2023 Wash&Fold<br />
                                     </td>
                                 </tr>
                             </table>

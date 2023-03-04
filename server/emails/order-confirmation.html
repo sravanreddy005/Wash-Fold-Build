@@ -47,6 +47,24 @@
             letter-spacing: 10px;
         }
 
+        table.top-0 {
+            margin-top: 0;
+        }
+
+        table.order-detail,
+        .order-detail th,
+        .order-detail td {
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+        }
+
+        .order-detail th {
+            font-size: 16px;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
         .h1,
         .h2,
         .bodycopy {
@@ -72,22 +90,12 @@
             line-height: 22px;
         }
 
-        .text-center {
-            text-align: center
-        }
-
-        .main-bg-light {
-            background-color: #fafafa;
-            width: 100%;
-        }
-
         .button {
             text-align: center;
-            font-size: 14px;
+            font-size: 18px;
             font-family: sans-serif;
             font-weight: bold;
-            padding: 0 10px 0 10px;
-            background-color: #e05443;
+            padding: 0 30px 0 30px;
         }
 
         .button a {
@@ -181,60 +189,79 @@
                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <td class="bodycopy">
-                                        <p style="font-size: 14px;"><b>Hi {{first_name}},</b></p>                                
-                                        <p style="font-size: 14px;">Your login credentials.</p>
+                                        <p>Payment Is Successfully Processsed And Will Initiate The Pickup</p>
+                                        <p>Transaction ID: {{orderID}}</p>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <table border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <h2 class="title">YOUR ORDER DETAILS</h2>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table class="order-detail" border="1" cellpadding="0" cellspacing="0" align="left">
+                                        <tr align="left">
+                                            <th>Product</th>
+                                            <th style="padding-left: 15px;">Description</th>
+                                            <th>Quantity</th>
+                                            <th>Price </th>
+                                            <th>Sub Total </th>
+                                        </tr>
+                                        {{#each orderData}}
+                                        <tr>
+                                            <td></td>
+                                            <td>{{this.product_name}}</td>
+                                            <td>{{this.quantity}}</td>
+                                            <td>{{this.product_price}}</td>
+                                            <td>{{this.total_price}}</td>
+                                        </tr>
+                                        {{/each}}
+                                        <tr>
+                                            <td colspan="2" style="line-height: 49px;font-size: 13px;color: #000000;
+                                                    padding-left: 20px;text-align:left;border-right: unset;">TOTAL AMOUNT :</td>
+                                            <td colspan="3" class="price"
+                                                style="line-height: 49px;text-align: right;padding-right: 28px;font-size: 13px;color: #000000;text-align:right;border-left: unset;">
+                                                <b>&#163; {{totalOrderPrice}}</b></td>
+                                        </tr>
+                                    </table>
+                                    <table cellpadding="0" cellspacing="0" border="0" align="left"
+                                        style="width: 100%;margin-top: 10px;    margin-bottom: 10px;">
+                                        <tbody>
+                                            <tr>
+                                                <td
+                                                    style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 50%;">
+                                                    <h5
+                                                        style="font-size: 16px; font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">
+                                                        Your Pickup Address</h5>
+                                                    <p
+                                                        style="text-align: left;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">
+                                                        {{address1}}, {{address2}}<br> {{city}} <br>{{pincode}}    
+                                                    </p>
+                                                </td>
+                                                <td>&nbsp;
+                                                </td>
+                                                <td
+                                                    style="background-color: #fafafa;border: 1px solid #ddd;padding: 15px;letter-spacing: 0.3px;width: 50%;">
+                                                    <h5
+                                                        style="font-size: 16px;font-weight: 600;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">
+                                                        Pickup & Delivery Time:</h5>
+                                                    <p
+                                                        style="text-align: left;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;    margin-top: 0;">
+                                                        Pickup : {{pickupDate}}, {{pickupTimeSlot}} <br>
+                                                        Delivery : {{dropDate}}, {{dropTimeSlot}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </tr>
                             </table>
                         </td>
-                    </tr>  
+                    </tr>                      
                     <tr>
-                        <td class="innerpadding borderbottom">                            
-                            <!--[if (gte mso 9)|(IE)]>
-                                <table width="380" align="left" cellpadding="0" cellspacing="0" border="0">
-                                <tr>
-                                    <td>
-                            <![endif]-->
-                            <table class="col380" align="left" border="0" cellpadding="0" cellspacing="0"
-                                style="width: 100%; max-width: 380px;">
-                                <tr>
-                                    <td>
-                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                                <td class="bodycopy">
-                                                    Username : <strong>{{username}}</strong>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="bodycopy">
-                                                    Password : <strong>{{password}}</strong>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="padding: 20px 0 0 0;">
-                                                    <table class="buttonwrapper" bgcolor="#e05443" border="0"
-                                                        cellspacing="0" cellpadding="0">
-                                                        <tr>
-                                                            <td class="button" height="30">
-                                                                <a href="{{login_url}}">Login Here!</a>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                            <!--[if (gte mso 9)|(IE)]>
-                                    </td>
-                                </tr>
-                            </table>
-                            <![endif]-->
-                        </td>
-                    </tr>                    
-                    <tr>
-                        <td class="footer" bgcolor="#f1ebeb">                            
+                        <td class="footer" bgcolor="#f1ebeb">
                             <table width="100%" border="0" cellspacing="0" cellpadding="0">                                
                                 <tr>
                                     <td align="center" style="padding: 0 0 20px 0;">

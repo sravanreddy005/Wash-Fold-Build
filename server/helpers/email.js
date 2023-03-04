@@ -27,6 +27,10 @@ module.exports.sendMail = (toMail, replaceData, type, emailProvider = 'nodemaile
                 var templateFile = 'send-otp.html';
                 var subject = 'Verification';
                 break;
+            case 'sendOrderConfirmation':
+                var templateFile = 'order-confirmation.html';
+                var subject = 'Order Confirmation';
+                break;
             default:
                 subject = '';
                 break;
@@ -37,8 +41,17 @@ module.exports.sendMail = (toMail, replaceData, type, emailProvider = 'nodemaile
                 console.log(err);
                 reject(err)
               } else {
+                let imageURLs = {
+                  logo: process.env.BASE_URL + '/uploads/logo.png',
+                  facebook: process.env.BASE_URL + '/uploads/facebook.png',
+                  linkedin: process.env.BASE_URL + '/uploads/linkedin.png',
+                  twitter: process.env.BASE_URL + '/uploads/twitter.png',
+                  youtube: process.env.BASE_URL + '/uploads/youtube.png',
+                }
+                let data = {...replaceData, ...imageURLs}
+
                 const template = handlebars.compile(html);
-                const htmlToSend = template(replaceData);
+                const htmlToSend = template(data);
                 if(emailProvider === 'sendinblue'){
                   let bodyData = {  
                       "sender":{  
@@ -51,7 +64,7 @@ module.exports.sendMail = (toMail, replaceData, type, emailProvider = 'nodemaile
                             "name":replaceData.name
                         }
                       ],
-                      "subject":"Verification",
+                      "subject": subject,
                       "htmlContent":htmlToSend
                   }
                   const options = {
@@ -59,7 +72,7 @@ module.exports.sendMail = (toMail, replaceData, type, emailProvider = 'nodemaile
                     url: 'https://api.sendinblue.com/v3/smtp/email',
                     headers: {
                       'Content-Type': 'application/json', 
-                      'api-key': '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'
+                      'api-key': ''
                     },
                     data: bodyData
                   };
@@ -93,7 +106,7 @@ module.exports.sendMail = (toMail, replaceData, type, emailProvider = 'nodemaile
                   const options = {
                     method: 'POST',
                     url: 'https://emailapi.netcorecloud.net/v5.1/mail/send',
-                    headers: {'Content-Type': 'application/json', 'api_key': 'ed49b435d04f04584e8985e15c364947'},
+                    headers: {'Content-Type': 'application/json', 'api_key': ''},
                     data: bodyData
                   };
 
